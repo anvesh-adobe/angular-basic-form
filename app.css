@@ -1,0 +1,23 @@
+.center-div{
+  margin: 2% auto;
+  padding: 1%;
+  width: 60% !important;
+  background: #f1f1f1;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+}
+
+.center-div .control-label::after{
+  content: '*';
+  font-family: sans-serif;
+}
+
+.error-block {
+  color: darkred !important;
+}
+
+.fa {
+  right: 5%;
+  position: absolute;
+  top: 35px;
+}

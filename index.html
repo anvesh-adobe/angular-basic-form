@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Anomali's Sample App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="app.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-messages.js"></script>
+  <script src="app.js"></script>
+</head>
+
+<body>
+  <div ng-controller="View1Ctrl">
+    <div class="container center-div">
+      <form name="form" novalidate>
+
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label class="control-label" for="firstName">FIRST NAME</label>
+            <input type="text" name="firstName" class="form-control" ng-model="registerObj.firstName" required/>
+            <i class="fa fa-newspaper-o"></i>
+        <span ng-messages="form.firstName.$error" ng-if="form.firstName.$touched || form.$submitted" role="alert">
+          <div class="error-block" ng-message-exp="'required'">Please Enter First Name</div>
+        </span>
+          </div>
+          <div class="col-md-6 form-group">
+            <label class="control-label" for="lastName">LAST NAME</label>
+            <input type="text" name="lastName" class="form-control" ng-model="registerObj.lastName" required/>
+        <span ng-messages="form.lastName.$error" ng-if="form.lastName.$touched || form.$submitted" role="alert">
+          <div class="error-block" ng-message-exp="'required'">Please Enter Last Name</div>
+        </span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 form-group">
+            <label class="control-label" for="companyName">COMPANY NAME</label>
+            <input type="text" name="companyName" class="form-control" ng-model="registerObj.companyName" required/>
+        <span ng-messages="form.companyName.$error" ng-if="form.companyName.$touched || form.$submitted" role="alert">
+          <div class="error-block" ng-message-exp="'required'">Please Enter Company name</div>
+       </span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 form-group">
+            <label class="control-label" for="workEmail">WORK EMAIL</label>
+            <input type="email" name="workEmail" class="form-control" ng-model="registerObj.workEmail" required/>
+        <span ng-messages="form.workEmail.$error" ng-if="form.workEmail.$touched || form.$submitted" role="alert">
+          <div class="error-block" ng-message-exp="'email'">Please Enter a Valid Email Address</div>
+          <div class="error-block" ng-message-exp="'required'">Please Enter Email Address</div>
+        </span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 form-group">
+            <label class="control-label" for="phoneNumber">PHONE NUMBER</label>
+            <input type="text" name="phoneNumber" class="form-control" ng-model="registerObj.phoneNumber" ng-pattern="/^[0-9]*$/" required/>
+        <span ng-messages="form.phoneNumber.$error" ng-if="form.phoneNumber.$dirty || form.$submitted" role="alert">
+          <div class="error-block" ng-message-exp="'required'">Please Enter Phone Number</div>
+          <div class="error-block" ng-message-exp="'pattern'">Please Enter only Number</div>
+       </span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label class="control-label" for="country">COUNTRY</label>
+            <select class="form-control" name="country" ng-model="registerObj.country" required>
+              <option value="">- Please Select -</option>
+              <option value="UK">UK</option>
+              <option value="USA">USA</option>
+            </select>
+        <span ng-messages="form.country.$error" ng-if="form.country.$touched || form.$submitted" role="alert">
+          <div class="error-block" ng-message-exp="'required'">Please Select a country</div>
+        </span>
+          </div>
+          <div class="col-md-6 form-group">
+            <label class="control-label" for="state">STATE</label>
+            <select class="form-control" name="state" ng-model="registerObj.state" ng-disabled="registerObj.country !== 'USA'">
+              <option value="">- Please Select State (US Only) -</option>
+              <option value="CA">CA</option>
+              <option value="AZ">AZ</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label class="control-label" for="industry">INDUSTRY</label>
+            <select class="form-control" name="industry" ng-model="registerObj.industry" required>
+              <option value="">- Please Select -</option>
+              <option value="IT">IT</option>
+              <option value="Manufaturing">Manufaturing</option>
+            </select>
+        <span ng-messages="form.industry.$error" ng-if="form.industry.$touched || form.$submitted" role="alert">
+          <div class="error-block" ng-message-exp="'required'">Please Select Industry</div>
+        </span>
+          </div>
+          <div class="col-md-6 form-group">
+            <label class="control-label" for="zip">ZIP/POSTAL</label>
+            <input type="text" name="zip" class="form-control" ng-model="registerObj.zip" required/>
+        <span ng-messages="form.zip.$error" ng-if="form.zip.$touched || form.$submitted" role="alert">
+          <div class="error-block" ng-message-exp="'required'">Please Enter ZIP/POSTAL Info</div>
+        </span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label class="control-label" for="password">PASSWORD</label>
+            <input type="password" name="password" class="form-control" ng-blur="checkPassword()" ng-model="registerObj.password" required/>
+            <i class="fa fa-key"></i>
+            <div class="error-block" ng-hide="validPassword">Password requires 1 Uppercase, 1 Lowercase, 1 Special Characters and at least 8 characters</div>
+
+        <span ng-messages="form.password.$error" ng-if="form.password.$touched || form.$submitted" role="alert">
+          <div class="error-block" ng-message-exp="'required'">Please Enter Password</div>
+        </span>
+          </div>
+
+          <div class="col-md-6 form-group">
+            <label class="control-label" for="confirmPassword">CONFIRM PASSWORD</label>
+            <input type="password" name="confirmPassword" class="form-control" ng-blur="confirmPasswordCheck()" ng-model="registerObj.confirmPassword" required/>
+            <i class="fa fa-key"></i>
+            <div class="error-block" ng-hide="passwordMatched">Password should be matched</div>
+
+        <span ng-messages="form.confirmPassword.$error" ng-if="form.confirmPassword.$touched || form.$submitted" role="alert">
+          <div class="error-block" ng-message-exp="'required'">Please enter confirm password</div>
+        </span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 form-group">
+            <input type="checkbox" value=""/>
+            <label><b>INTERESTED IN BECOMING A PARTNER</b></label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="text-center">
+            <p>By clicking Register, you agree to Anomali's <a>Terms of Use</a> and <a>Privacy Policy</a></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="text-center">
+            <button type="submit" class="btn btn-success">REGISTER</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</body>
+</html>
